@@ -8,14 +8,20 @@
 #include "file_reader.h"
 #include "lexer.h"
 
-FileLine* file_as_lines  = NULL;
+FileLine* file_as_lines     = NULL;
+Token* line_as_tokens       = NULL;
+
+/* Debug variables for printing errors, warnings, etc. */
+FileLine const* DebugLastFileLine = NULL;
+Token const*    DebugLastToken    = NULL;
 
 void safeFreeAll() {
+    /* In the event the program crashes early... Let's hope this works :) */
+
     /* main.c */
     safeFree(file_as_lines);
 
     /* lexer.c */
-    extern Token* line_as_tokens;
     safeFree(line_as_tokens);
 }
 
@@ -34,6 +40,7 @@ int main(int argc, char** argv) {
     printf_dbg("\n");
 
     const LexNode master_node = buildLexTree(file_as_lines, num_lines);
+    printLexTree(master_node);
     deleteLexTree(master_node);
 
     safeFreeAll();

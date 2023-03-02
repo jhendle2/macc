@@ -1,10 +1,14 @@
 #include <stdio.h>
 
+const char* toStr() {
+    return "Hello!"; 
+}
+
 int main() {
-    // if (1 == 1) {
-    //     printf("Hello, World!\n");
-    //     char c = '\"';
-    // }
-    printf("It\'s not my dog.\n");
+    // This is a line comment!
+    if (1 == 1) {
+        const char* s = toStr();
+    }
+    printf("Hello, World!\n");
     return 0;
 }

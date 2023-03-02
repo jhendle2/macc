@@ -3,6 +3,7 @@
 
 #include <sys/types.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 typedef struct file_line_s {
     #ifndef FILE_LINE_S

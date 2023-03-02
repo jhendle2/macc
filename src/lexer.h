@@ -43,8 +43,9 @@ typedef struct lex_node_s {
 
 LexNode newLexNode(const Token tokens[MAX_TOKENS_IN_LINE], const size_t num_tokens);
 bool deleteLexTree(LexNode node);
+bool addLexNodeChild(LexNode parent, LexNode child);
 
-void printLexNode(const LexNode node);
+void printLexNode(const LexNode node, const size_t level);
 void printLexTree(const LexNode node);
 
 const LexNode buildLexTree(FileLine file_as_lines[MAX_LINES_IN_FILE], const size_t num_lines);

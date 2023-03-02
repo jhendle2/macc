@@ -36,8 +36,8 @@ test:
 valgrind:
 	valgrind -s --leak-check=full --track-origins=yes ./$(APP) $(EXAMPLE)
 
-valgrind-debug: debug valgrind
-valgrind-release: release valgrind
+valgrind-debug: clean debug valgrind
+valgrind-release: clean release valgrind
 
 clean:
 	@rm $(APP) $(OBJ)/*.o

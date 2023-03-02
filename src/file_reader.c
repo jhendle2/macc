@@ -7,6 +7,7 @@
 
 #include "macros.h"
 #include "safe.h"
+#include "debug.h"
 
 FileLine newFileLine(const size_t line_number, const char line_buf[MAX_LINE_BUF_SZ], const char file_name[MAX_FILE_NAME_SZ]) {
     FileLine fl = {
@@ -124,6 +125,8 @@ size_t readFileAsLines(const char file_name[MAX_FILE_NAME_SZ], FileLine** file_a
         if (sanitized_len == 0) continue;
 
         FileLine fl = newFileLine(line_number, line_buf, file_name);
+
+        DebugLastFileLine = &fl;
         copyFileLine(&(*file_as_lines)[num_lines++], fl);
     }
 
